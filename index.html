@@ -1,16 +1,221 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Portfolio</title>
-  <style>
-    body { font-family: -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-           display: flex; align-items: center; justify-content: center; min-height: 100vh;
-           margin: 0; color: #555; }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Portfolio — Portfolio</title>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css"/>
+<style>
+:root {
+  --accent: #2563eb;
+  --font-heading: 'Pretendard Variable', Pretendard, -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-body: 'Pretendard Variable', Pretendard, -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Segoe UI', Helvetica, Arial, sans-serif;
+  --fs-base: 13px;
+  --fs-name: 28px;
+  --gap-section: 28px;
+  --gap-item: 14px;
+  --pad-page: 52px 58px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-body); font-size: var(--fs-base); line-height: 1.65; }
+h1, h2, h3 { font-family: var(--font-heading); }
+img { max-width: 100%; }
+.hero { overflow: hidden; }
+.hero-name { display: inline-block; }
+.hero-photo { width: 72px; height: 72px; object-fit: cover; float: right; margin-left: 16px; }
+.hero-photo-circle { border-radius: 50%; }
+.hero-photo-square { border-radius: 8px; }
+.hero-center { text-align: center; }
+.hero-center .hero-photo { float: none; display: block; margin: 0 auto 12px; }
+.badge { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 10px;
+         padding: 1px 10px; margin-left: 10px; vertical-align: 3px; }
+.contact { margin-top: 8px; font-size: 12px; }
+.sep { padding: 0 6px; }
+.sec { margin-bottom: var(--gap-section); }
+.item { margin-bottom: var(--gap-item); }
+.item-head { overflow: hidden; }
+.item-title { font-weight: 700; font-size: 14px; }
+.item-period { float: right; font-size: 12px; }
+.item-sub { font-size: 12px; margin-top: 1px; }
+.meta { font-size: 12px; margin-top: 1px; }
+.desc { margin-top: 4px; }
+.tagline { font-style: italic; margin-top: 1px; }
+.chips { margin-top: 6px; }
+.chip { display: inline-block; font-size: 11px; border-radius: 3px; padding: 0 7px;
+        margin: 0 4px 4px 0; }
+.skill-group { margin-bottom: 8px; }
+.skill-name { font-weight: 700; display: inline-block; min-width: 96px; }
+.skill-cell { display: inline-block; font-size: 12px; border-radius: 6px; padding: 6px 10px;
+              margin: 0 6px 6px 0; min-width: 110px; text-align: center; }
+.item.project { margin-bottom: 22px; }
+.project-name { font-size: 15px; display: inline-block; }
+.projects-cards .project { border: 1px solid rgba(127, 127, 127, 0.3); border-radius: 10px;
+                           padding: 14px 16px; }
+.projects-list .project { margin-bottom: 16px; }
+.projects-showcase .project { margin-bottom: 12px; }
+.projects-showcase .project-lead { margin-bottom: 24px; }
+.projects-showcase .project-lead .project-name { font-size: 19px; }
+.label { font-weight: 700; font-size: 12px; margin-top: 8px; }
+ul { margin: 3px 0 0 18px; }
+li { margin-bottom: 2px; }
+.links { margin-top: 8px; font-size: 12px; }
+@page { size: A4; margin: 16mm 14mm; }
+@media print {
+  a { text-decoration: none; }
+  .project, .item { page-break-inside: avoid; }
+}
+/* ── 사이트급 공통 (WEB) — 전부 @media screen / html.js 게이트라 PDF·JS없음에 무영향 ──
+   스티키 내비/reveal/커버/버튼 링크. 색·무드 디테일은 테마 CSS가 @media screen에서 덧입힌다. */
+.site-nav { display: none; }
+@media screen {
+  .site-nav { display: block; position: sticky; top: 0; z-index: 50;
+              border-bottom: 1px solid rgba(127, 127, 127, 0.18); }
+  .nav-inner { max-width: 960px; margin: 0 auto; padding: 11px 24px;
+               display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .nav-logo { font-family: var(--font-heading); font-weight: 700; font-size: 15px;
+              text-decoration: none; white-space: nowrap; }
+  .nav-links { display: flex; flex-wrap: wrap; gap: 18px; justify-content: flex-end; }
+  .nav-links a { font-size: 12.5px; text-decoration: none; opacity: 0.7;
+                 transition: opacity 0.2s ease, color 0.2s ease; white-space: nowrap; }
+  .nav-links a:hover, .nav-links a.active { opacity: 1; }
+  .sec, .hero { scroll-margin-top: 68px; }
+  .project-cover { margin-bottom: 14px; border-radius: 8px; overflow: hidden;
+                   background: rgba(127, 127, 127, 0.08); }
+  .project-cover img { display: block; width: 100%; height: auto; }
+  .projects-cards .project-cover { margin: -14px -16px 14px; border-radius: 9px 9px 0 0; }
+  .links .btn-link { display: inline-block; text-decoration: none; margin: 0 8px 6px 0;
+                     padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;
+                     border: 1px solid rgba(127, 127, 127, 0.35);
+                     transition: transform 0.15s ease, background 0.2s ease,
+                                 border-color 0.2s ease, color 0.2s ease; }
+  .links .btn-link:hover { transform: translateY(-1px); }
+  /* js-gated reveal: html.js는 JS가 즉시 부여 — JS 없으면(PDF·비활성) 요소 항상 보임 */
+  html.js .reveal { opacity: 0; transform: translateY(20px); }
+  html.js .reveal.in { opacity: 1; transform: none;
+                       transition: opacity 0.55s ease, transform 0.55s ease; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.js .reveal, html.js .reveal.in { opacity: 1; transform: none; transition: none; }
+}
+body { background: #f1f3f6; color: #1f2430; }
+a { color: #1f2430; }
+.page { max-width: 900px; margin: 28px auto; padding: 0 16px; }
+.hero { background: #ffffff; border-radius: 14px; border: 1px solid #e3e6ec;
+        border-top: 4px solid var(--accent); padding: 26px 30px; margin-bottom: 16px; }
+.hero-name { font-size: var(--fs-name); }
+.badge { color: #ffffff; background: var(--accent); }
+.contact, .contact a, .sep { color: #5c6474; }
+.sec { background: #ffffff; border-radius: 14px; border: 1px solid #e3e6ec;
+       padding: 22px 26px; margin-bottom: 16px; }
+.sec h2 { font-size: 13px; color: #3b4254; margin-bottom: 12px; }
+.sec h2.latin { letter-spacing: 0.06em; }
+.item-period, .item-sub, .meta { color: #5c6474; }
+.tagline { color: #454c5c; }
+.chip { background: #eef1f6; border: 1px solid #e0e5ee; color: #33405e; }
+.skill-cell { background: #f4f6fa; border: 1px solid #e0e5ee; }
+.links a { color: var(--accent); }
+.label { color: #33405e; }
+@media screen {
+  .sec { box-shadow: 0 1px 3px rgba(16, 24, 40, 0.06);
+         transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .hero { box-shadow: 0 1px 3px rgba(16, 24, 40, 0.06); }
+  .chip { background: color-mix(in srgb, var(--accent) 10%, #ffffff);
+          border-color: color-mix(in srgb, var(--accent) 22%, #ffffff); }
+  .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .sec { margin-bottom: 0; }
+  .sec-intro, .sec-projects, .sec-experience { grid-column: 1 / -1; }
+  .site-nav { background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(8px);
+              border-bottom-color: #e3e6ec; }
+  .nav-logo { color: #1f2430; }
+  .nav-links a { color: #5c6474; }
+  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+  .hero-name { font-size: clamp(28px, 4.6vw, 40px); }
+  .hero-tagline { color: #5c6474; font-size: clamp(14px, 2.2vw, 18px); margin-top: 8px; }
+  .sec-projects .project { background: #ffffff; border: 1px solid #e3e6ec;
+      border-radius: 12px; border-top: 3px solid var(--accent); padding: 16px 18px;
+      margin-bottom: 14px; overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .sec-projects .project:hover { transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(16, 24, 40, 0.12); }
+  .sec-projects .project-cover { margin: -16px -18px 14px; border-radius: 0; }
+  .links .btn-link { background: color-mix(in srgb, var(--accent) 10%, #ffffff);
+      border-color: color-mix(in srgb, var(--accent) 22%, #ffffff); color: var(--accent); }
+  .links .btn-link:hover { transform: translateY(-1px);
+      background: color-mix(in srgb, var(--accent) 16%, #ffffff); }
+}
+@media print {
+  body { background: #ffffff; }
+  .page { max-width: none; margin: 0; padding: 0; }
+  .hero, .sec { border-color: #dfe3ea; padding: 16px 18px; margin-bottom: 12px; }
+}
+</style>
 </head>
-<body>
-  <p>포트폴리오 준비 중 — CommitBee에서 발행하면 이 페이지가 채워집니다.</p>
+<body class="theme-card density-comfortable mode-web">
+<nav class="site-nav">
+<div class="nav-inner">
+<a class="nav-logo" href="#top">Portfolio</a>
+<div class="nav-links"><a href="#sec-intro">소개</a><a href="#sec-skills">기술 스택</a><a href="#sec-projects">프로젝트</a></div>
+</div>
+</nav>
+<div class="page">
+<header id="top" class="hero">
+<h1 class="hero-name">이름 미입력</h1>
+<div class="contact"></div>
+</header>
+<main class="sections">
+<section id="sec-intro" class="sec sec-intro reveal">
+<h2><span class="sec-title">소개</span></h2>
+</section>
+<section id="sec-skills" class="sec sec-skills reveal">
+<h2><span class="sec-title">기술 스택</span></h2>
+</section>
+<section id="sec-projects" class="sec sec-projects sec-flow reveal">
+<h2><span class="sec-title">프로젝트</span></h2>
+<div class="items projects projects-list">
+</div>
+</section>
+</main>
+</div>
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reveals = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    for (var i = 0; i < reveals.length; i++) { reveals[i].classList.add('in'); }
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+  var secs = [];
+  links.forEach(function (a) {
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    if (el) { secs.push(el); }
+  });
+  function spy() {
+    var pos = window.pageYOffset + window.innerHeight * 0.3, cur = '';
+    secs.forEach(function (s) { if (s.offsetTop <= pos) { cur = s.id; } });
+    links.forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+    });
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  window.addEventListener('resize', spy);
+  spy();
+  document.querySelectorAll('.site-nav a').forEach(function (a) {
+    a.addEventListener('click', function (ev) {
+      var href = a.getAttribute('href');
+      if (!href || href.charAt(0) !== '#') { return; }
+      var t = href === '#top' ? document.body : document.getElementById(href.slice(1));
+      if (t) { ev.preventDefault(); t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }
+    });
+  });
+})();
+</script>
 </body>
 </html>
