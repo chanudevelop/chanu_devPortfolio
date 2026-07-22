@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Portfolio — Portfolio</title>
+<title>김찬우 — Portfolio</title>
 <script>document.documentElement.classList.add('js');</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.min.css"/>
 <style>
 :root {
-  --accent: #2563eb;
+  --accent: #b45309;
   --font-heading: 'Pretendard Variable', Pretendard, -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Segoe UI', Helvetica, Arial, sans-serif;
   --font-body: 'Pretendard Variable', Pretendard, -apple-system, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Segoe UI', Helvetica, Arial, sans-serif;
   --fs-base: 13px;
@@ -98,70 +98,59 @@ li { margin-bottom: 2px; }
 @media (prefers-reduced-motion: reduce) {
   html.js .reveal, html.js .reveal.in { opacity: 1; transform: none; transition: none; }
 }
-body { background: #f1f3f6; color: #1f2430; }
-a { color: #1f2430; }
-.page { max-width: 900px; margin: 28px auto; padding: 0 16px; }
-.hero { background: #ffffff; border-radius: 14px; border: 1px solid #e3e6ec;
-        border-top: 4px solid var(--accent); padding: 26px 30px; margin-bottom: 16px; }
+body { background: #fafaf8; color: #1c1c1c; }
+a { color: #1c1c1c; }
+.page { max-width: 780px; margin: 28px auto; background: #ffffff;
+        padding: var(--pad-page); border: 1px solid #e7e5e0; }
+.hero { border-bottom: 2px solid #1c1c1c; padding-bottom: 18px; margin-bottom: var(--gap-section); }
 .hero-name { font-size: var(--fs-name); }
 .badge { color: #ffffff; background: var(--accent); }
-.contact, .contact a, .sep { color: #5c6474; }
-.sec { background: #ffffff; border-radius: 14px; border: 1px solid #e3e6ec;
-       padding: 22px 26px; margin-bottom: 16px; }
-.sec h2 { font-size: 13px; color: #3b4254; margin-bottom: 12px; }
-.sec h2.latin { letter-spacing: 0.06em; }
-.item-period, .item-sub, .meta { color: #5c6474; }
-.tagline { color: #454c5c; }
-.chip { background: #eef1f6; border: 1px solid #e0e5ee; color: #33405e; }
-.skill-cell { background: #f4f6fa; border: 1px solid #e0e5ee; }
-.links a { color: var(--accent); }
-.label { color: #33405e; }
+.contact, .contact a { color: #555555; }
+.sep { color: #bbbbbb; }
+.sec h2 { font-size: 12px; text-transform: uppercase; color: #444444;
+          border-bottom: 1px solid #d9d7d0; padding-bottom: 5px; margin-bottom: 12px; }
+.sec h2.latin { letter-spacing: 0.12em; }
+.item-title { color: #1c1c1c; }
+.item-period, .item-sub, .meta { color: #666666; }
+.tagline { color: #444444; }
+.chip { background: #f0efea; border: 1px solid #e2e0d8; color: #3a382f; }
+.skill-cell { background: #f7f6f2; border: 1px solid #e2e0d8; }
+.links a, .contact a:hover { color: var(--accent); }
+.label { color: #3a382f; }
 @media screen {
-  .sec { box-shadow: 0 1px 3px rgba(16, 24, 40, 0.06);
-         transition: transform 0.2s ease, box-shadow 0.2s ease; }
-  .hero { box-shadow: 0 1px 3px rgba(16, 24, 40, 0.06); }
-  .chip { background: color-mix(in srgb, var(--accent) 10%, #ffffff);
-          border-color: color-mix(in srgb, var(--accent) 22%, #ffffff); }
-  .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .sec { margin-bottom: 0; }
-  .sec-intro, .sec-projects, .sec-experience { grid-column: 1 / -1; }
-  .site-nav { background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(8px);
-              border-bottom-color: #e3e6ec; }
-  .nav-logo { color: #1f2430; }
-  .nav-links a { color: #5c6474; }
+  .item-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .item-period { float: none; }
+  .site-nav { background: rgba(250, 250, 248, 0.85); backdrop-filter: blur(8px);
+              border-bottom-color: #e7e5e0; }
+  .nav-logo { color: #1c1c1c; }
+  .nav-links a { color: #6b6b6b; }
   .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-  .hero-name { font-size: clamp(28px, 4.6vw, 40px); }
-  .hero-tagline { color: #5c6474; font-size: clamp(14px, 2.2vw, 18px); margin-top: 8px; }
-  .sec-projects .project { background: #ffffff; border: 1px solid #e3e6ec;
-      border-radius: 12px; border-top: 3px solid var(--accent); padding: 16px 18px;
-      margin-bottom: 14px; overflow: hidden;
-      transition: transform 0.2s ease, box-shadow 0.2s ease; }
-  .sec-projects .project:hover { transform: translateY(-4px);
-      box-shadow: 0 12px 28px rgba(16, 24, 40, 0.12); }
-  .sec-projects .project-cover { margin: -16px -18px 14px; border-radius: 0; }
-  .links .btn-link { background: color-mix(in srgb, var(--accent) 10%, #ffffff);
-      border-color: color-mix(in srgb, var(--accent) 22%, #ffffff); color: var(--accent); }
-  .links .btn-link:hover { transform: translateY(-1px);
-      background: color-mix(in srgb, var(--accent) 16%, #ffffff); }
+  .hero-name { font-size: clamp(30px, 5vw, 44px); }
+  .projects-cards .project { transition: border-color 0.2s ease, transform 0.2s ease,
+                             box-shadow 0.2s ease, border-bottom-width 0.2s ease; }
+  .projects-cards .project:hover { transform: translateY(-3px);
+      border-bottom: 2px solid var(--accent);
+      box-shadow: 0 8px 22px rgba(28, 28, 28, 0.08); }
+  .links .btn-link { background: #f0efea; border-color: #e2e0d8; color: #3a382f; }
+  .links .btn-link:hover { border-color: var(--accent); color: var(--accent); }
 }
 @media print {
   body { background: #ffffff; }
-  .page { max-width: none; margin: 0; padding: 0; }
-  .hero, .sec { border-color: #dfe3ea; padding: 16px 18px; margin-bottom: 12px; }
+  .page { max-width: none; margin: 0; padding: 0; border: none; }
 }
 </style>
 </head>
-<body class="theme-card density-comfortable mode-web">
+<body class="theme-minimal density-comfortable mode-web">
 <nav class="site-nav">
 <div class="nav-inner">
-<a class="nav-logo" href="#top">Portfolio</a>
+<a class="nav-logo" href="#top">김찬우</a>
 <div class="nav-links"><a href="#sec-intro">소개</a><a href="#sec-skills">기술 스택</a><a href="#sec-projects">프로젝트</a></div>
 </div>
 </nav>
 <div class="page">
 <header id="top" class="hero">
-<h1 class="hero-name">이름 미입력</h1>
-<div class="contact"></div>
+<h1 class="hero-name">김찬우</h1>
+<div class="contact"><a href="mailto:chanu.develop@gmail.com">chanu.develop@gmail.com</a></div>
 </header>
 <main class="sections">
 <section id="sec-intro" class="sec sec-intro reveal">
